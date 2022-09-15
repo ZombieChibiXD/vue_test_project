@@ -33,6 +33,8 @@ export const useEmailStore = defineStore('emails', {
         category: 'INBOX'
       },
     ],
+    /** @type {?{ id: number, isRead: boolean, subject: string, body: string, category: string }} */
+    reading: null,
   }),
   getters: {
     inboxMails(state){

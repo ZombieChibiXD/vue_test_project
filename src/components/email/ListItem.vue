@@ -12,12 +12,16 @@ defineProps({
     type: String,
     required: true,
   },
+  toggle: {
+    type: Function,
+    required: true,
+  }
 });
 </script>
 
 <template>
   <div class="mailitem" :class="read && 'mailitem--visited'">
-    <input class="mailitem__checkbox" type="checkbox" v-model="checked" @click="(e) => e.stopPropagation()" />
+    <input class="mailitem__checkbox" type="checkbox" v-model="checked" @click="(e) =>{ e.stopPropagation(); toggle() }" />
     <h3 class="mailitem__subject">{{ subject }}</h3>
   </div>
 </template>
