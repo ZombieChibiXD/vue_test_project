@@ -1,31 +1,42 @@
 <script setup>
-  import { RouterLink, RouterView } from 'vue-router'
-  import Sidebar from './components/Sidebar.vue';
-  </script>
+import { RouterLink, RouterView } from "vue-router";
+import Sidebar from "./components/Sidebar.vue";
+</script>
 
-  <template>
-    <div>
-      <section class="layout">
-        <Sidebar>
-          <template #top>
-            <button>Top</button>
-            <nav>
-              <RouterLink to="/">Inbox</RouterLink>
-              <RouterLink to="/archive">Archive</RouterLink>
-            </nav>
-          </template>
-          <template #bottom>
-            <button>bottom</button>
-          </template>
-        </Sidebar>
-        <RouterView />
-      </section>
-      <section>
-        <!-- Mail view goes here. -->
-      </section>
-    </div>
+<template>
+  <section class="layout">
+    <Sidebar>
+      <template #top>
+        <nav>
+          <RouterLink class="sidebar__button" to="/">Inbox</RouterLink>
 
-  </template>
+          <RouterLink class="sidebar__button" to="/archive">Archive</RouterLink>
+        </nav>
+      </template>
+      <template #bottom>
+        <RouterLink class="sidebar__button" to="#">Logout</RouterLink>
+      </template>
+    </Sidebar>
+    <RouterView />
+  </section>
+</template>
 
-  <style scoped>
-  </style>
+<style scoped>
+.layout {
+  display: flex;
+  flex-grow: 1;
+}
+
+.sidebar__button {
+  border: none;
+  cursor: pointer;
+  display: block;
+  background: none;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  width: 200px;
+  background-color: white;
+}
+</style>
