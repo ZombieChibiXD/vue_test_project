@@ -35,6 +35,8 @@ export const useEmailStore = defineStore('emails', {
     ],
     /** @type {?{ id: number, isRead: boolean, subject: string, body: string, category: string }} */
     reading: null,
+    viewer: false,
+    readerTimeout: null,
   }),
   getters: {
     inboxMails(state){
@@ -44,4 +46,37 @@ export const useEmailStore = defineStore('emails', {
       return state.emails.filter(email => email.category === 'ARCHIVED')
     },
   },
+  actions: {
+    /** @param {number} id */
+    markAsRead(id){
+      const mail = this.emails.find(({id}) => {
+        return id === id
+      })
+      if (mail === undefined) return;
+      mail.isRead = true
+
+    },
+    /** @param {number} id */
+    toggleAsArchive(id){
+      const mail = this.emails.find(({id}) => {
+        return id === id
+      })
+      if (mail === undefined) return;
+      mail.category = mail.category === 'INBOX' ? 'ARCHIVED' : 'INBOX'
+    },
+    /** @param {{ id: number, isRead: boolean, subject: string, body: string, category: string }} mail */
+    readMail(mail){
+      console.log('Reading', mail)
+      clearTimeout(this.readerTimeout)
+      this.reading = mail
+      this.viewer = true
+    },
+    closeReader(){
+      this.viewer = false
+      this.readerTimeout = setTimeout(()=>{
+        this.reading = null
+      }, 10000);
+    }
+
+  }
 })

@@ -1,10 +1,13 @@
 <script>
-// import { useEmailStore } from "../stores/email";
-
-// const store = useEmailStore();
-
+import { useEmailStore } from "../stores/email";
 import ListItem from "./Email/ListItem.vue";
 export default {
+  setup() {
+    const emailStore = useEmailStore();
+    return {
+      emailStore,
+    };
+  },
   components: {
     ListItem,
   },
@@ -18,27 +21,27 @@ export default {
      * @param id {number}
      */
     toggleId(id) {
-      if (!this.selectedIds.delete(id)) this.selectedIds.add(id)
+      if (!this.selectedIds.delete(id)) this.selectedIds.add(id);
     },
-    toggleCheckboxes(){
+    toggleCheckboxes() {
       if (this.$props.mails.length === this.selectedIds.size) {
         this.selectedIds.clear();
         return;
       }
-      this.$props.mails.forEach(({id}) =>{
-        this.selectedIds.add(id)
-      })
+      this.$props.mails.forEach(({ id }) => {
+        this.selectedIds.add(id);
+      });
     },
-    markAsRead(){
-      this.selectedIds.forEach(id => {
-        console.log(id);
-      })
+    markAsRead() {
+      this.selectedIds.forEach((id) => {
+        this.emailStore.markAsRead(id);
+      });
     },
-    setAsArchive(){
-      this.selectedIds.forEach(id => {
-
-      })
-      this.selectedIds.clear()
+    toggleAsArchive() {
+      this.selectedIds.forEach((id) => {
+        this.emailStore.toggleAsArchive(id);
+      });
+      this.selectedIds.clear();
     },
   },
   props: {
@@ -61,9 +64,18 @@ export default {
       </h3>
     </section>
     <section class="inbox__control">
-      <input class="inbox__control__all" type="checkbox" :checked="mails.length === selectedIds.size" @click="toggleCheckboxes()" />
-      <button class="inbox__control__button" @click="markAsRead()">Mark as Read (r)</button>
-      <button class="inbox__control__button" @click="setAsArchive()">Toggle Archive (a)</button>
+      <input
+        class="inbox__control__all"
+        type="checkbox"
+        :checked="mails.length === selectedIds.size"
+        @click="toggleCheckboxes()"
+      />
+      <button class="inbox__control__button" @click="markAsRead()">
+        Mark as Read (r)
+      </button>
+      <button class="inbox__control__button" @click="toggleAsArchive()">
+        Toggle Archive (a)
+      </button>
     </section>
     <section class="inbox__list">
       <ListItem
@@ -73,8 +85,8 @@ export default {
         :checked="selectedIds.has(mail.id)"
         :subject="mail.subject"
         :read="mail.isRead"
-        />
-        <!-- @click="store.reading = mail" -->
+        @click="emailStore.readMail(mail)"
+      />
     </section>
   </div>
 </template>
@@ -98,7 +110,6 @@ export default {
   &__control {
     display: flex;
     flex-direction: row;
-    background-color: red;
     align-items: center;
     padding: 1rem 1rem;
     gap: 1rem;
