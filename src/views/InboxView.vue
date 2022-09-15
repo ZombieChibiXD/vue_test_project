@@ -1,12 +1,20 @@
-<script setup>
+<script>
 import Inbox from "../components/Inbox.vue";
 import { useEmailStore } from "../stores/email";
 
-const store = useEmailStore();
+import { mapState } from "pinia";
+export default {
+  components: {
+    Inbox,
+  },
+  computed: {
+    ...mapState(useEmailStore, ["inboxMails"]),
+  },
+};
 </script>
 
 <template>
-  <Inbox :mails="store.inboxMails">
+  <Inbox :mails="inboxMails">
     <template #header>Inbox</template>
   </Inbox>
 </template>

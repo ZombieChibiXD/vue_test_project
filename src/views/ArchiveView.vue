@@ -1,12 +1,19 @@
-<script setup>
+<script>
 import Inbox from "../components/Inbox.vue";
 import { useEmailStore } from "../stores/email";
 
-const store = useEmailStore();
+import { mapState } from "pinia";
+export default {
+  components: {
+    Inbox,
+  },
+  computed: {
+    ...mapState(useEmailStore, ["archivedMails"]),
+  },
+};
 </script>
-
 <template>
-  <Inbox :mails="store.archivedMails">
+  <Inbox :mails="archivedMails">
     <template #header>Archive</template>
   </Inbox>
 </template>

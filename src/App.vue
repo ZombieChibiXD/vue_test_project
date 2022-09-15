@@ -1,10 +1,18 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from "vue-router";
 import Sidebar from "./components/Sidebar.vue";
 import { useEmailStore } from "./stores/email";
-
-const store = useEmailStore()
-
+import { mapState } from "pinia";
+export default {
+  components: {
+    Sidebar,
+    RouterLink,
+    RouterView,
+  },
+  computed: {
+    ...mapState(useEmailStore, ["inboxMails", "archivedMails"]),
+  },
+};
 </script>
 
 <template>
@@ -12,9 +20,13 @@ const store = useEmailStore()
     <Sidebar>
       <template #top>
         <nav>
-          <RouterLink class="sidebar__button" to="/">Inbox ({{ store.inboxMails.length}})</RouterLink>
+          <RouterLink class="sidebar__button" to="/"
+            >Inbox ({{ inboxMails.length }})</RouterLink
+          >
 
-          <RouterLink class="sidebar__button" to="/archive">Archive ({{ store.archivedMails.length}})</RouterLink>
+          <RouterLink class="sidebar__button" to="/archive"
+            >Archive ({{ archivedMails.length }})</RouterLink
+          >
         </nav>
       </template>
       <template #bottom>
