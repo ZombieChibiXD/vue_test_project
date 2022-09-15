@@ -29,7 +29,8 @@ import ListItem from './Email/ListItem.vue';
 
 <style lang="scss" scoped>
 .inbox{
-  padding: 2rem 2rem;
+  flex-grow: 1;
+  padding: 4rem 4rem;
   &__top{
     margin-bottom: 1rem;
   }
@@ -67,6 +68,7 @@ import ListItem from './Email/ListItem.vue';
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding: 1rem 0;
   }
 
 }
