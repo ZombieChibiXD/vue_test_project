@@ -1,8 +1,12 @@
-<template>
-  <div class="view_page">
-    <h1>This is archive view</h1>
-  </div>
-</template>
+<script setup>
+  import Inbox from '../components/Inbox.vue';
+  </script>
 
-<style>
-</style>
+  <template>
+    <Inbox>
+      <template #header>Archive</template>
+    </Inbox>
+  </template>
+
+  <style>
+  </style>

@@ -1,7 +1,11 @@
+<script setup>
+import Inbox from '../components/Inbox.vue';
+</script>
+
 <template>
-  <div class="view_page">
-    <h1>This is inbox page</h1>
-  </div>
+  <Inbox>
+    <template #header>Inbox</template>
+  </Inbox>
 </template>
 
 <style>

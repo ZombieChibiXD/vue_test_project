@@ -18,9 +18,7 @@
             <button>bottom</button>
           </template>
         </Sidebar>
-        <main class="view">
-          <RouterView />
-        </main>
+        <RouterView />
       </section>
       <section>
         <!-- Mail view goes here. -->
