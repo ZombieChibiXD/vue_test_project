@@ -1,6 +1,10 @@
 <script setup>
 import { RouterLink, RouterView } from "vue-router";
 import Sidebar from "./components/Sidebar.vue";
+import { useEmailStore } from "./stores/email";
+
+const store = useEmailStore()
+
 </script>
 
 <template>
@@ -8,9 +12,9 @@ import Sidebar from "./components/Sidebar.vue";
     <Sidebar>
       <template #top>
         <nav>
-          <RouterLink class="sidebar__button" to="/">Inbox</RouterLink>
+          <RouterLink class="sidebar__button" to="/">Inbox ({{ store.inboxMails.length}})</RouterLink>
 
-          <RouterLink class="sidebar__button" to="/archive">Archive</RouterLink>
+          <RouterLink class="sidebar__button" to="/archive">Archive ({{ store.archivedMails.length}})</RouterLink>
         </nav>
       </template>
       <template #bottom>
