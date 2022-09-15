@@ -1,5 +1,10 @@
 <script setup>
 import ListItem from './Email/ListItem.vue';
+
+
+const clicked = () => {
+  console.log('clicked');
+}
 </script>
 
 <template>
@@ -18,11 +23,11 @@ import ListItem from './Email/ListItem.vue';
       <button class="inbox__control__button" >Archive (a)</button>
     </section>
     <section class="inbox__list">
+      <ListItem subject="'Test Subject'" @click="clicked()" />
       <ListItem subject="'Test Subject'" />
       <ListItem subject="'Test Subject'" />
       <ListItem subject="'Test Subject'" />
-      <ListItem subject="'Test Subject'" />
-      <ListItem subject="'Test Subject'" />
+      <ListItem subject="'Test Subject'" :read="true"/>
     </section>
   </div>
 </template>
