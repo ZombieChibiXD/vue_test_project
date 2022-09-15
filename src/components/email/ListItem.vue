@@ -12,9 +12,9 @@ defineProps({
 </script>
 
 <template>
-  <div class="mail_list_item">
-    <input class="mail_list_item_checked" type="checkbox" v-model="checked" />
-    <h3 class="mail_list_item_subject">{{ subject }}</h3>
+  <div class="mail__list__item">
+    <input class="mail__list__item__checked" type="checkbox" v-model="checked" />
+    <h3 class="mail__list__item__subject">{{ subject }}</h3>
   </div>
 </template>
 

@@ -12,12 +12,12 @@ defineProps({
 </script>
 
 <template>
-    <div class="mail_content">
+    <div class="mail__content">
         <div>
-            <h1 class="mail_content_subject">{{ subject }}</h1>
+            <h1 class="mail__content__subject">{{ subject }}</h1>
         </div>
         <div>
-            <p class="mail_content_body">{{ body }}</p>
+            <p class="mail__content__body">{{ body }}</p>
         </div>
     </div>
 </template>

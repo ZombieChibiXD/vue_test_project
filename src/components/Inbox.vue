@@ -4,7 +4,7 @@ import ListItem from './Email/ListItem.vue';
 
 <template>
   <div class="inbox">
-    <header class="inbox_header">
+    <header class="inbox__header">
       <slot name="header"></slot>
     </header>
     <section>
