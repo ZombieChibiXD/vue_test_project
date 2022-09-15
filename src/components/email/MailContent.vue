@@ -24,5 +24,19 @@ export default{
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+.mail__content{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    &__subject{
+        font-weight: 700;
+        font-size: x-large;
+    }
+
+    &__body{
+        font-weight: 500;
+    }
+}
 </style>

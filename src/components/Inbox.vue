@@ -11,6 +11,18 @@ export default {
   components: {
     ListItem,
   },
+  created() {
+    window.addEventListener("keydown", (e) => {
+      if (!this.emailStore.viewer) {
+        if (e.key == "r") this.markAsRead();
+        if (e.key == "a") this.toggleAsArchive();
+      }
+    });
+  },
+  beforeUnmount() {
+    // window.removeEventListener("keydown", keypress);
+    this.selectedIds.clear();
+  },
   data() {
     return {
       selectedIds: new Set(),
@@ -59,15 +71,13 @@ export default {
       <h1 class="inbox__header">
         <slot name="header"></slot>
       </h1>
-      <h3 class="inbox__selected">
-        Email Selected (<span v-text="selectedIds.size"></span>)
-      </h3>
+      <h3 class="inbox__selected">Email Selected ({{ selectedIds.size }})</h3>
     </section>
     <section class="inbox__control">
       <input
         class="inbox__control__all"
         type="checkbox"
-        :checked="mails.length === selectedIds.size"
+        :checked="mails.length === selectedIds.size && selectedIds.size > 0"
         @click="toggleCheckboxes()"
       />
       <button class="inbox__control__button" @click="markAsRead()">

@@ -10,18 +10,17 @@
 </template>
 
 <style lang="scss">
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  background-color: black;
+  min-height: 100vh;
+  width: 230px;
+  padding: 1.5rem 1rem;
+  gap: 10px;
 
-  .sidebar {
-    display: flex;
-    flex-direction: column;
-    background-color: black;
-    min-height: 100vh;
-    width: 256px;
-    padding: 1.5rem 1.5rem;
-    gap: 10px;
-
-    &__top{
-      flex-grow: 1;
-    }
+  &__top {
+    flex-grow: 1;
   }
+}
 </style>
