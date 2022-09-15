@@ -18,7 +18,7 @@
             <button>bottom</button>
           </template>
         </Sidebar>
-        <main>
+        <main class="view">
           <RouterView />
         </main>
       </section>
