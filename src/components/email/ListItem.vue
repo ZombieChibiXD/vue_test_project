@@ -1,27 +1,39 @@
-<script setup>
-defineProps({
-  checked: {
-    type: Boolean,
-    default: false,
+<script>
+export default {
+  props: {
+    checked: {
+      type: Boolean,
+      default: false,
+    },
+    read: {
+      type: Boolean,
+      default: false,
+    },
+    subject: {
+      type: String,
+      required: true,
+    },
+    toggle: {
+      type: Function,
+      required: true,
+    },
   },
-  read:{
-    type: Boolean,
-    default: false,
-  },
-  subject: {
-    type: String,
-    required: true,
-  },
-  toggle: {
-    type: Function,
-    required: true,
-  }
-});
+};
 </script>
 
 <template>
   <div class="mailitem" :class="read && 'mailitem--visited'">
-    <input class="mailitem__checkbox" type="checkbox" v-model="checked" @click="(e) =>{ e.stopPropagation(); toggle() }" />
+    <input
+      class="mailitem__checkbox"
+      type="checkbox"
+      v-model="checked"
+      @click="
+        (e) => {
+          e.stopPropagation();
+          toggle();
+        }
+      "
+    />
     <h3 class="mailitem__subject">{{ subject }}</h3>
   </div>
 </template>
@@ -35,9 +47,9 @@ defineProps({
   border-radius: 4px;
   border: 1px gray;
   cursor: pointer;
-  &--visited{
+  &--visited {
     // Opacity 0.5
-    opacity: .5;
+    opacity: 0.5;
   }
   &__checkbox {
     display: block;

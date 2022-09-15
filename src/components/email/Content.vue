@@ -1,14 +1,16 @@
-<script setup>
-defineProps({
-    subject: {
-        type: String,
-        required: true
-    },
-    body: {
-        type: String,
-        required: true
+<script>
+export default{
+    props: {
+        subject: {
+            type: String,
+            required: true
+        },
+        body: {
+            type: String,
+            required: true
+        }
     }
-})
+}
 </script>
 
 <template>

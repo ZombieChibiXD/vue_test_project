@@ -1,5 +1,3 @@
-<script setup></script>
-
 <template>
   <div class="sidebar">
     <div class="sidebar__content sidebar__top">
