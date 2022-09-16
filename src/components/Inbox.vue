@@ -1,6 +1,6 @@
 <script>
 import { useEmailStore } from "../stores/email";
-import ListItem from "./Email/ListItem.vue";
+import ListItem from "./email/ListItem.vue";
 export default {
   setup() {
     const emailStore = useEmailStore();
